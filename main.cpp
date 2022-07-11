@@ -129,6 +129,7 @@ public:
     MyDeque(int defaultSize= 10);
     ~MyDeque(void);
     void enMyDeque(T& newElem);
+    void enMyDeque(T&& newElem);
     T deMyDeque();
     T getFront();
     void makeEmpty(){length = 0;}
@@ -164,9 +165,18 @@ void MyDeque<T>::enMyDeque(T &newElem)
 }
 
 template<class T>
+void MyDeque<T>::enMyDeque(T&& newElem)
+{
+    assert(!isFull());
+    length++;
+    rear = (rear + 1) % maxSize;
+    elem[rear] = newElem;
+}
+
+template<class T>
 T MyDeque<T>::deMyDeque()
 {
-    assert(isEmpty());
+    assert(!isEmpty());
     length--;
     return elem[(rear- length + maxSize) % maxSize];
 }
@@ -174,7 +184,7 @@ T MyDeque<T>::deMyDeque()
 template<class T>
 T MyDeque<T>::getFront()
 {
-    assert(isEmpty());
+    assert(!isEmpty());
     return elem[(rear - length + 1 +  maxSize) % maxSize];
 }
 
@@ -211,4 +221,10 @@ int main()
     cout << testOneNum(5) << endl;
 
     countNum();
+
+    MyDeque<int> myDeque(5);
+    myDeque.enMyDeque(1);
+    myDeque.enMyDeque(2);
+    myDeque.deMyDeque();
+    cout << myDeque.getFront() << endl;
 }
