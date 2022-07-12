@@ -57,6 +57,10 @@ int main()
     }
     cout << a << endl;
 
+    char* ptr1 = "abc";
+    cout << &ptr1 << endl;
+    char ptr2[] = "abcd";
+    cout << &ptr2 << endl;
 
     MyString myString1("hello");
     MyString myString2(myString1);
@@ -86,6 +90,11 @@ int main()
     myStack.push(1);
     myStack.push(2);
     cout << myStack.pop() << endl;
+
+    int testInt = 5;
+    std::shared_ptr<int> sharedPtr = std::make_shared<int>(testInt);
+    cout << sharedPtr.use_count() << "   " << *sharedPtr << endl;
+
 
     return 0;
 }

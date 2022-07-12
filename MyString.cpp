@@ -24,8 +24,8 @@ MyString::MyString(const char *str)
 MyString::MyString(const MyString &other)
 {
     int len = strlen(other.m_data);
-    m_data = new char[len + 1];
-    strcpy(m_data, other.m_data);
+    this->m_data = new char[len + 1];
+    strcpy(this->m_data, other.m_data);
 }
 
 MyString::~MyString(void)
