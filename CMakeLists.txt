@@ -3,4 +3,4 @@ project(testTimu)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(testTimu main.cpp)
+add_executable(testTimu MyStack.h MyString.h MyString.cpp MyDeque.h main.cpp)
